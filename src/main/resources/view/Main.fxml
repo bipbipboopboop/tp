@@ -17,6 +17,5 @@
         </VBox>
     </HBox>
     <VBox fx:id="textBoxComponent" prefHeight="50.0">
-        <!-- <TextField fx:id="textBox"/> -->
     </VBox>
 </fx:root>

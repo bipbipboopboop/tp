@@ -1,7 +1,11 @@
 package vimification.taskui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyEvent;
@@ -9,6 +13,9 @@ import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
 import vimification.logic.Logic;
+import vimification.model.task.Description;
+import vimification.model.task.Task;
+import vimification.model.task.Title;
 
 /**
  * The Main Window. Provides the basic application layout containing a menu bar and space where
@@ -16,13 +23,13 @@ import vimification.logic.Logic;
  */
 public class MainWindow extends VBox {
 
-    private static final String FXML = "Main.fxml";
+    // private static final String FXML = "Main.fxml";
 
     private Stage primaryStage;
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    // private TaskListPanel taskListPanel;
+    private TaskListPanel taskListPanel;
     private CommandInput commandInput;
 
     @FXML
@@ -51,6 +58,13 @@ public class MainWindow extends VBox {
 
             commandInput = new CommandInput(this);
             textBoxComponent.getChildren().add(commandInput);
+
+            Task task1 = new Task(new Title("Task 1"), new Description("Description 1"));
+            Task task2 = new Task(new Title("Task 2"), new Description("Description 2"));
+            ObservableList<Task> list = new FilteredList<>(null);
+            list.addAll(task1, task2);
+            taskListPanel = new TaskListPanel(list);
+            leftComponent.getChildren().add(taskListPanel.getRoot());
 
             // Set up the ":" key listener to show/hide the text box component
         } catch (IOException ex) {
