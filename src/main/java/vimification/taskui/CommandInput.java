@@ -16,7 +16,6 @@ public class CommandInput extends UiPart<TextField> {
     private static final String FXML = "CommandInput.fxml";
     private Node parent;
 
-
     public CommandInput(Node parent) {
         super(FXML);
         this.parent = parent;

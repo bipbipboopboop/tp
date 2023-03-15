@@ -37,9 +37,10 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            VimificationMainUi vimificationMainUi = new VimificationMainUi(logic);
-            Scene scene = new Scene(vimificationMainUi.getRoot());
+            MainScreen mainScreen = new MainScreen(logic);
+            Scene scene = new Scene(mainScreen.getRoot());
             scene.getRoot().requestFocus();
+            primaryStage.setTitle("Vimification");
             primaryStage.setScene(scene); // Setting the stage to show our screen
             primaryStage.show();
 
@@ -51,6 +52,5 @@ public class UiManager implements Ui {
     private Image getImage(String imagePath) {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
-
 
 }

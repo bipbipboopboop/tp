@@ -17,7 +17,7 @@ import vimification.ui.UiPart;
  */
 public class TaskCard extends UiPart<Region> {
 
-    private static final String FXML = "TaskListCard.fxml";
+    private static final String FXML = "TaskCard.fxml";
 
     public final Task task = new Task(new Title("hi"), new Description("hi"));
 

@@ -11,9 +11,9 @@ import vimification.ui.PersonListPanel;
  * The Main Scene. Provides the basic application layout containing a menu bar and space where other
  * JavaFX elements can be placed.
  */
-public class VimificationMainUi extends UiPart<VBox> {
+public class MainScreen extends UiPart<VBox> {
 
-    private static final String FXML = "VimificationMainUi.fxml";
+    private static final String FXML = "MainScreen.fxml";
 
     private Logic logic;
 
@@ -38,7 +38,7 @@ public class VimificationMainUi extends UiPart<VBox> {
     /**
      * Creates a {@code MainWindow} with {@code Logic}.
      */
-    public VimificationMainUi(Logic logic) {
+    public MainScreen(Logic logic) {
         super(FXML);
         this.logic = logic;
         init();
