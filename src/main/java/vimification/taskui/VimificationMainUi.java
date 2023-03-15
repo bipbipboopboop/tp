@@ -83,7 +83,7 @@ public class VimificationMainUi extends UiPart<VBox> {
 
         // Initialize commandInputComponent
         commandInput = new CommandInput(this.getRoot());
-        commandInputComponent.getChildren().add(commandInput);
+        commandInputComponent.getChildren().add(commandInput.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         leftComponent.getChildren().add(personListPanel.getRoot());
