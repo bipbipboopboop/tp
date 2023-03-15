@@ -19,7 +19,7 @@ import vimification.model.task.Title;
  * The Main Window. Provides the basic application layout containing a menu bar and space where
  * other JavaFX elements can be placed.
  */
-public class MainWindow extends VBox {
+public class MainWindow extends UiPart<VBox> {
 
     // private static final String FXML = "Main.fxml";
 
@@ -42,32 +42,19 @@ public class MainWindow extends VBox {
     // @FXML
     // private TextField textBox;
 
+    private static final String FXML = "Main.fxml";
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
-            fxmlLoader.setController(this);
-            fxmlLoader.setRoot(this);
-            fxmlLoader.load();
-            setFocusTraversable(true); // Important
+    public MainWindow(Logic logic) {
+        super(FXML);
+        this.getRoot().setFocusTraversable(true); // Important
+        this.logic = logic;
 
-            commandInput = new CommandInput(this);
-            textBoxComponent.getChildren().add(commandInput);
-
-            // Task task1 = new Task(new Title("Task 1"), new Description("Description 1"));
-            // Task task2 = new Task(new Title("Task 2"), new Description("Description 2"));
-            // ObservableList<Task> list = new FilteredList<>(null);
-            // list.addAll(task1, task2);
-            // taskListPanel = new TaskListPanel(list);
-            leftComponent.getChildren().add(taskListPanel.getRoot());
-
-            // Set up the ":" key listener to show/hide the text box component
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        commandInput = new CommandInput(this.getRoot());
+        textBoxComponent.getChildren().add(commandInput);
     }
 
     public Stage getPrimaryStage() {
@@ -111,5 +98,7 @@ public class MainWindow extends VBox {
         commandInput.setVisible(true);
         commandInput.requestFocus();
     }
+
+
 
 }
