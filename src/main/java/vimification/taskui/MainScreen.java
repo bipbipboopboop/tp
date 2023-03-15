@@ -11,15 +11,19 @@ import vimification.ui.PersonListPanel;
  * The Main Scene. Provides the basic application layout containing a menu bar and space where other
  * JavaFX elements can be placed.
  */
-public class VimificationMainUi extends UiPart<VBox> {
+public class MainScreen extends UiPart<VBox> {
 
-    private static final String FXML = "VimificationMainUi.fxml";
+    private static final String FXML = "MainScreen.fxml";
 
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private TaskListPanel taskListPanel;
+    // private TaskListPanel taskListPanel;
+
     private PersonListPanel personListPanel;
+
+    private TaskCreationPanel taskCreationPanel;
+
     private CommandInput commandInput;
 
     @FXML
@@ -34,7 +38,7 @@ public class VimificationMainUi extends UiPart<VBox> {
     /**
      * Creates a {@code MainWindow} with {@code Logic}.
      */
-    public VimificationMainUi(Logic logic) {
+    public MainScreen(Logic logic) {
         super(FXML);
         this.logic = logic;
         init();
@@ -54,6 +58,7 @@ public class VimificationMainUi extends UiPart<VBox> {
             break;
         case "i":
             System.out.println("You've created a task!");
+            handleTaskCreation();
             break;
         case "d":
             System.out.println("You've deleted a task!");
@@ -71,6 +76,13 @@ public class VimificationMainUi extends UiPart<VBox> {
             System.out.println("You've moved down");
             break;
         }
+    }
+
+    private void handleTaskCreation() {
+        taskCreationPanel = new TaskCreationPanel(this.getRoot());
+        rightComponent.getChildren().clear();
+        rightComponent.getChildren().add(taskCreationPanel.getRoot());
+        taskCreationPanel.requestFocus();
     }
 
     private void handleCommand() {

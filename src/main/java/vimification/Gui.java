@@ -68,19 +68,7 @@ public class Gui extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Create control
-        // MainWindow mainWindow = new MainWindow();
-        // Vimification vimification = new Vimification(primaryStage, null);
-        // Set window
-        // configureStage(primaryStage);
-
         ui.start(primaryStage);
-
-        // Scene scene = new Scene(vimification.getRoot());
-        // scene.getRoot().requestFocus();
-        // primaryStage.setScene(scene); // Setting the stage to show our screen
-        // primaryStage.show(); // Render the stage.
-
     }
 
     /**
