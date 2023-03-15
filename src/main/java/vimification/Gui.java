@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import vimification.commons.core.Config;
 import vimification.commons.core.LogsCenter;

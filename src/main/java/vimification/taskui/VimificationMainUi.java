@@ -1,33 +1,25 @@
 package vimification.taskui;
 
-import java.io.IOException;
-
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
-import javafx.stage.Stage;
 import vimification.logic.Logic;
-import vimification.model.task.Description;
-import vimification.model.task.Task;
-import vimification.model.task.Title;
+import vimification.ui.PersonListPanel;
 
 /**
- * The Main Window. Provides the basic application layout containing a menu bar and space where
- * other JavaFX elements can be placed.
+ * The Main Scene. Provides the basic application layout containing a menu bar and space where other
+ * JavaFX elements can be placed.
  */
-public class MainWindow extends UiPart<VBox> {
+public class VimificationMainUi extends UiPart<VBox> {
 
-    // private static final String FXML = "Main.fxml";
+    private static final String FXML = "VimificationMainUi.fxml";
 
-    private Stage primaryStage;
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
     private TaskListPanel taskListPanel;
+    private PersonListPanel personListPanel;
     private CommandInput commandInput;
 
     @FXML
@@ -37,28 +29,15 @@ public class MainWindow extends UiPart<VBox> {
     private VBox rightComponent;
 
     @FXML
-    private VBox textBoxComponent;
-
-    // @FXML
-    // private TextField textBox;
-
-    private static final String FXML = "Main.fxml";
-
+    private VBox commandInputComponent;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MainWindow} with {@code Logic}.
      */
-    public MainWindow(Logic logic) {
+    public VimificationMainUi(Logic logic) {
         super(FXML);
-        this.getRoot().setFocusTraversable(true); // Important
         this.logic = logic;
-
-        commandInput = new CommandInput(this.getRoot());
-        textBoxComponent.getChildren().add(commandInput);
-    }
-
-    public Stage getPrimaryStage() {
-        return primaryStage;
+        init();
     }
 
     /**
@@ -99,6 +78,14 @@ public class MainWindow extends UiPart<VBox> {
         commandInput.requestFocus();
     }
 
+    private void init() {
+        this.getRoot().setFocusTraversable(true); // Important
 
+        // Initialize commandInputComponent
+        commandInput = new CommandInput(this.getRoot());
+        commandInputComponent.getChildren().add(commandInput);
 
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        leftComponent.getChildren().add(personListPanel.getRoot());
+    }
 }

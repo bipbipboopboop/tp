@@ -9,12 +9,12 @@
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#handleKeyPressed">
     <HBox>
         <VBox fx:id="leftComponent" prefHeight="500.0" prefWidth="300.0">
-            <Label text="Task List Component Test"/>
+            <!-- <Label text="Task List Component Test"/> -->
         </VBox>
         <VBox fx:id="rightComponent" prefHeight="500.0" prefWidth="700.0">
             <Label text="Detailed Task Component"/>
         </VBox>
     </HBox>
-    <VBox fx:id="textBoxComponent" prefHeight="50.0">
+    <VBox fx:id="commandInputComponent" prefHeight="50.0">
     </VBox>
 </VBox>

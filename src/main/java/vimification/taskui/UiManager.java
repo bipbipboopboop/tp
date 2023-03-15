@@ -2,10 +2,7 @@ package vimification.taskui;
 
 import java.util.logging.Logger;
 
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import vimification.MainApp;
@@ -40,8 +37,8 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            MainWindow mainWindow = new MainWindow(logic);
-            Scene scene = new Scene(mainWindow.getRoot());
+            VimificationMainUi vimificationMainUi = new VimificationMainUi(logic);
+            Scene scene = new Scene(vimificationMainUi.getRoot());
             scene.getRoot().requestFocus();
             primaryStage.setScene(scene); // Setting the stage to show our screen
             primaryStage.show();
