@@ -18,8 +18,12 @@ public class VimificationMainUi extends UiPart<VBox> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private TaskListPanel taskListPanel;
+    // private TaskListPanel taskListPanel;
+
     private PersonListPanel personListPanel;
+
+    private TaskCreationPanel taskCreationPanel;
+
     private CommandInput commandInput;
 
     @FXML
@@ -54,6 +58,7 @@ public class VimificationMainUi extends UiPart<VBox> {
             break;
         case "i":
             System.out.println("You've created a task!");
+            handleTaskCreation();
             break;
         case "d":
             System.out.println("You've deleted a task!");
@@ -71,6 +76,13 @@ public class VimificationMainUi extends UiPart<VBox> {
             System.out.println("You've moved down");
             break;
         }
+    }
+
+    private void handleTaskCreation() {
+        taskCreationPanel = new TaskCreationPanel(this.getRoot());
+        rightComponent.getChildren().clear();
+        rightComponent.getChildren().add(taskCreationPanel.getRoot());
+        taskCreationPanel.requestFocus();
     }
 
     private void handleCommand() {
