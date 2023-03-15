@@ -1,8 +1,6 @@
 package vimification.taskui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -59,11 +57,11 @@ public class MainWindow extends VBox {
             commandInput = new CommandInput(this);
             textBoxComponent.getChildren().add(commandInput);
 
-            Task task1 = new Task(new Title("Task 1"), new Description("Description 1"));
-            Task task2 = new Task(new Title("Task 2"), new Description("Description 2"));
-            ObservableList<Task> list = new FilteredList<>(null);
-            list.addAll(task1, task2);
-            taskListPanel = new TaskListPanel(list);
+            // Task task1 = new Task(new Title("Task 1"), new Description("Description 1"));
+            // Task task2 = new Task(new Title("Task 2"), new Description("Description 2"));
+            // ObservableList<Task> list = new FilteredList<>(null);
+            // list.addAll(task1, task2);
+            // taskListPanel = new TaskListPanel(list);
             leftComponent.getChildren().add(taskListPanel.getRoot());
 
             // Set up the ":" key listener to show/hide the text box component
@@ -83,11 +81,35 @@ public class MainWindow extends VBox {
      */
     @FXML
     private void handleKeyPressed(KeyEvent event) {
-        if (event.getText().equals(":")) {
-            commandInput.setVisible(true);
-            commandInput.requestFocus();
+
+        switch (event.getText()) {
+        case ":":
+            handleCommand();
+            break;
+        case "i":
+            System.out.println("You've created a task!");
+            break;
+        case "d":
+            System.out.println("You've deleted a task!");
+            break;
+        case "h":
+            System.out.println("You've moved to the left");
+            break;
+        case "l":
+            System.out.println("You've moved to the right");
+            break;
+        case "j":
+            System.out.println("You've moved up");
+            break;
+        case "k":
+            System.out.println("You've moved down");
+            break;
         }
     }
 
+    private void handleCommand() {
+        commandInput.setVisible(true);
+        commandInput.requestFocus();
+    }
 
 }
